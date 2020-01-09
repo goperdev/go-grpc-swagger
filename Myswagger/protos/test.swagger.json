@@ -1,0 +1,50 @@
+{
+
+  "swagger": "2.0",
+  "info": {
+    "title": "test.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/Greeter/get": {
+      "get": {
+        "operationId": "Hello",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/protoResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Greeter"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protoResponse": {
+      "type": "object",
+      "properties": {
+        "msg": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

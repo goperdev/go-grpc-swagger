@@ -1,0 +1,28 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+package proto;
+option go_package = "proto";
+
+
+message BaseResponse {
+    int32 code = 1;
+    string message = 2;
+    string error = 3;
+    repeated string details = 4;
+}
+
+service Greeter {
+    rpc Hello(Request) returns (Response) {
+        option (google.api.http) = {
+            get:"/Greeter/get"
+        };
+    }
+}
+
+message Request {
+    string name = 1;
+}
+
+message Response {
+    string msg = 1;
+}

@@ -1,0 +1,11 @@
+## dockerfile  .gitlab-ci
+stages:
+    - deploy
+ 
+deploy_dev_job:
+    stage: deploy
+    script:
+      - docker build -t hello .
+      - if [ "$(docker ps -a -q -f name=hello)" ]; then docker rm -f hello; fi
+      - docker run -d -p 9010:9010 --net=host --restart=always  --name hello hello
+
